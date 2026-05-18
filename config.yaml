@@ -1,0 +1,32 @@
+skill:
+  name: "{{SKILL_NAME}}"
+  version: "{{SKILL_VERSION}}"
+
+llm:
+  provider: "openai"              # openai | anthropic | ollama
+  model: "gpt-4o"
+  temperature: 0.3
+  max_tokens: 4096
+  timeout_seconds: 120
+
+vector_store:
+  provider: "chromadb"            # chromadb | faiss | pinecone
+  collection_name: "{{SKILL_NAME}}_docs"
+  persist_path: "vector_store/"
+  embedding_model: "text-embedding-3-small"
+  retrieval_top_k: 5
+  similarity_threshold: 0.75
+
+runtime:
+  max_retries: 3
+  retry_backoff: "exponential"    # exponential | linear
+  log_level: "INFO"               # DEBUG | INFO | WARNING | ERROR
+
+evaluation:
+  confidence_threshold: 0.7
+  latency_threshold_ms: 30000
+  auto_fix: false
+
+output:
+  base_dir: "outputs/"
+  formats: ["json", "markdown"]
