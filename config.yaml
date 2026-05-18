@@ -1,13 +1,19 @@
 skill:
-  name: "{{SKILL_NAME}}"
-  version: "{{SKILL_VERSION}}"
+  name: "{{Universal AI Skill Framework}}"
+  version: "{{v1.0}}"
 
 llm:
   provider: "openai"              # openai | anthropic | ollama
-  model: "gpt-4o"
+  model: "gpt-5"
   temperature: 0.3
-  max_tokens: 4096
+  max_tokens: 12000
   timeout_seconds: 120
+
+permissions:
+  code_generation: true
+  file_modification: true
+  internet_access: optional
+  deployment: optional
 
 vector_store:
   provider: "chromadb"            # chromadb | faiss | pinecone
@@ -28,5 +34,6 @@ evaluation:
   auto_fix: false
 
 output:
-  base_dir: "outputs/"
-  formats: ["json", "markdown"]
+  format: markdown
+  include_validation: true
+  save_outputs: true
